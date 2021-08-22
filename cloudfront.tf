@@ -86,7 +86,11 @@ resource "aws_cloudfront_distribution" "cloudfront" {
   is_ipv6_enabled     = false
   price_class         = "PriceClass_100"
 
-  restrictions {}
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
 
   viewer_certificate {
     acm_certificate_arn            = var.acm_certificate_arn
