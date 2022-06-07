@@ -3,9 +3,10 @@ resource "aws_route53_zone" "zone" {
 }
 
 resource "aws_route53_health_check" "target_server" {
+  fqdn              = var.domain_name
   ip_address        = var.target_server_ip
-  port              = 80
-  type              = "HTTP"
+  port              = 443
+  type              = "HTTPS"
   failure_threshold = 5
   request_interval  = 30
   resource_path     = "/ping"
